@@ -17,7 +17,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        let TasksViewController = UINavigationController(rootViewController: MainViewController())
+        let SecondViewController = UINavigationController(rootViewController: AddTaskViewController())
+        
+        window?.rootViewController = TasksViewController
+
+        window?.rootViewController?.title = "Shirayo's ToDo List"
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
     }

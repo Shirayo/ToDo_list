@@ -7,28 +7,60 @@
 //
 
 import UIKit
+import Foundation
 
-class ViewController: UIViewController, TaskTableViewDelegate {
+class MainViewController: UIViewController, TaskTableViewDelegate {
 
     var completedTasks: [Task] = [Task("jepa", false)]
     var tasks: [Task] = [Task("jedkfmael;kgnergjnwergjnwe;rlkgnwe;lkrgn;welkrgnew;lkrnpa", false), Task("jepa", false), Task("jepa", false), Task("jepa", false)]
     
     let taskTableView = UITableView()
+    let addTaskButton = UIButton()
+    var bottomConstraint = NSLayoutConstraint()
+    var currentRotation: CGFloat = 0
+
+    override func viewWillAppear(_ animated: Bool) {
+        bottomConstraint.constant = -40
+        UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
+            self.addTaskButton.layoutIfNeeded()
+            }, completion: nil
+        )
+    }
+    
     
     override func viewDidLoad() {
-        taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "TaskTableViewCell")
         super.viewDidLoad()
+        taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "TaskTableViewCell")
         view.addSubview(taskTableView)
-        autoLayoutForTableView()
+        view.addSubview(addTaskButton)
+
+        setAddTaskButton()
+        setConstraintsForTableView()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editTask))
         taskTableView.delegate = self
         taskTableView.dataSource = self
     }
     
+    func setAddTaskButton(isActive: Bool = true) {
+        self.addTaskButton.translatesAutoresizingMaskIntoConstraints = false
+        self.addTaskButton.widthAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = isActive
+        self.addTaskButton.heightAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = isActive
+        self.addTaskButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = isActive
+        
+        self.bottomConstraint = NSLayoutConstraint(item: addTaskButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: -40)
+        self.bottomConstraint.isActive = true
+        
+        self.addTaskButton.backgroundColor = .white
+        self.addTaskButton.setImage(UIImage(named: "redPlus"), for: .normal) 
+        self.addTaskButton.layer.cornerRadius = self.view.frame.width / 10
+        self.addTaskButton.addTarget(self, action: #selector(goToAddTaskViewController), for: .touchUpInside)
+       
+    }
     
-    func autoLayoutForTableView() {
-        taskTableView.translatesAutoresizingMaskIntoConstraints = false
-        taskTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        taskTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    func setConstraintsForTableView () {
+        self.taskTableView.translatesAutoresizingMaskIntoConstraints = false
+        self.taskTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        self.taskTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         taskTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         taskTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
@@ -38,6 +70,34 @@ class ViewController: UIViewController, TaskTableViewDelegate {
         let task = Task(text)
         tasks.insert(task, at: 0)
         taskTableView.reloadData()
+    }
+    
+    @objc func goToAddTaskViewController() {
+        if taskTableView.isEditing == true {
+            rotateAddTaskButton(.pi / 4)
+            taskTableView.setEditing(false, animated: true)
+        } else {
+            navigationController?.pushViewController(AddTaskViewController(), animated: true)
+        }
+    }
+    
+    @objc func editTask() {
+        let isEditing = !self.taskTableView.isEditing
+        if isEditing {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "done", style: .plain, target: self, action: #selector(editTask))
+            rotateAddTaskButton(.pi / 4)
+        } else {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editTask))
+            rotateAddTaskButton(.pi / 4)
+        }
+        self.taskTableView.setEditing(isEditing, animated: true)
+    }
+    
+    func rotateAddTaskButton(_ angle: CGFloat) {
+        self.currentRotation += angle
+        UIView.animate(withDuration: 0.3) {
+            self.addTaskButton.transform = CGAffineTransform(rotationAngle: self.currentRotation)
+        }
     }
     
     func updateTasks() {
@@ -66,7 +126,7 @@ class ViewController: UIViewController, TaskTableViewDelegate {
 
 
 //MARK: extentions
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
