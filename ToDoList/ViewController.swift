@@ -14,29 +14,22 @@ class MainViewController: UIViewController, TaskTableViewDelegate {
     var completedTasks: [Task] = [Task("jepa", false)]
     var tasks: [Task] = [Task("jedkfmael;kgnergjnwergjnwe;rlkgnwe;lkrgn;welkrgnew;lkrnpa", false), Task("jepa", false), Task("jepa", false), Task("jepa", false)]
     
+    
     let taskTableView = UITableView()
     let addTaskButton = UIButton()
     var bottomConstraint = NSLayoutConstraint()
     var currentRotation: CGFloat = 0
-
-    override func viewWillAppear(_ animated: Bool) {
-        bottomConstraint.constant = -40
-        UIView.animate(withDuration: 0.4, delay: 0.1, options: [], animations: {
-            self.addTaskButton.layoutIfNeeded()
-            }, completion: nil
-        )
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "TaskTableViewCell")
+        
         view.addSubview(taskTableView)
         view.addSubview(addTaskButton)
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editTask))
         setAddTaskButton()
         setConstraintsForTableView()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editTask))
         taskTableView.delegate = self
         taskTableView.dataSource = self
     }
@@ -47,8 +40,7 @@ class MainViewController: UIViewController, TaskTableViewDelegate {
         self.addTaskButton.heightAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = isActive
         self.addTaskButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = isActive
         
-        self.bottomConstraint = NSLayoutConstraint(item: addTaskButton, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1, constant: -40)
-        self.bottomConstraint.isActive = true
+        self.addTaskButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = isActive
         
         self.addTaskButton.backgroundColor = .white
         self.addTaskButton.setImage(UIImage(named: "redPlus"), for: .normal) 
@@ -76,6 +68,7 @@ class MainViewController: UIViewController, TaskTableViewDelegate {
         if taskTableView.isEditing == true {
             rotateAddTaskButton(.pi / 4)
             taskTableView.setEditing(false, animated: true)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editTask))
         } else {
             navigationController?.pushViewController(AddTaskViewController(), animated: true)
         }

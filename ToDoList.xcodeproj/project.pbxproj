@@ -17,6 +17,8 @@
 		847530F9248E978E00253548 /* MarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530F5248E978E00253548 /* MarkButton.swift */; };
 		847530FA248E978E00253548 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530F6248E978E00253548 /* TaskTableViewCell.swift */; };
 		847530FC2490DF1900253548 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530FB2490DF1900253548 /* AddTaskViewController.swift */; };
+		847530FE24923E7600253548 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530FD24923E7600253548 /* CustomTabBar.swift */; };
+		8475310024925E7D00253548 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530FF24925E7D00253548 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		847530F5248E978E00253548 /* MarkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkButton.swift; sourceTree = "<group>"; };
 		847530F6248E978E00253548 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		847530FB2490DF1900253548 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		847530FD24923E7600253548 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		847530FF24925E7D00253548 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				847530F5248E978E00253548 /* MarkButton.swift */,
 				847530F3248E978E00253548 /* Task.swift */,
 				847530F6248E978E00253548 /* TaskTableViewCell.swift */,
+				847530FF24925E7D00253548 /* TabBarViewController.swift */,
+				847530FD24923E7600253548 /* CustomTabBar.swift */,
 				847530E0248E96C000253548 /* ViewController.swift */,
 				847530FB2490DF1900253548 /* AddTaskViewController.swift */,
 				847530E8248E96C500253548 /* Assets.xcassets */,
@@ -153,9 +159,11 @@
 				847530FC2490DF1900253548 /* AddTaskViewController.swift in Sources */,
 				847530F9248E978E00253548 /* MarkButton.swift in Sources */,
 				847530E1248E96C000253548 /* ViewController.swift in Sources */,
+				847530FE24923E7600253548 /* CustomTabBar.swift in Sources */,
 				847530DD248E96C000253548 /* AppDelegate.swift in Sources */,
 				847530F7248E978E00253548 /* Task.swift in Sources */,
 				847530DF248E96C000253548 /* SceneDelegate.swift in Sources */,
+				8475310024925E7D00253548 /* TabBarViewController.swift in Sources */,
 				847530E7248E96C100253548 /* ToDoList.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
