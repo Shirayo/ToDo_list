@@ -18,6 +18,7 @@ class AddTaskViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .gray
         view.addSubview(createTaskTableView)
         
@@ -32,6 +33,9 @@ class AddTaskViewController: UIViewController, UITableViewDelegate {
         createTaskTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
     }
+    
+    
+    
 }
 
 //extension AddTaskViewController: UITableViewDelegate, UITableViewDataSource {

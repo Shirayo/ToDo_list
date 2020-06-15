@@ -19,6 +19,7 @@
 		847530FC2490DF1900253548 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530FB2490DF1900253548 /* AddTaskViewController.swift */; };
 		847530FE24923E7600253548 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530FD24923E7600253548 /* CustomTabBar.swift */; };
 		8475310024925E7D00253548 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847530FF24925E7D00253548 /* TabBarViewController.swift */; };
+		848E02F52493D90A00582127 /* FavouritesTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E02F42493D90A00582127 /* FavouritesTasksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		847530FB2490DF1900253548 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		847530FD24923E7600253548 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		847530FF24925E7D00253548 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		848E02F42493D90A00582127 /* FavouritesTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTasksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,19 +72,36 @@
 			children = (
 				847530DC248E96C000253548 /* AppDelegate.swift */,
 				847530DE248E96C000253548 /* SceneDelegate.swift */,
-				847530F5248E978E00253548 /* MarkButton.swift */,
 				847530F3248E978E00253548 /* Task.swift */,
-				847530F6248E978E00253548 /* TaskTableViewCell.swift */,
-				847530FF24925E7D00253548 /* TabBarViewController.swift */,
-				847530FD24923E7600253548 /* CustomTabBar.swift */,
-				847530E0248E96C000253548 /* ViewController.swift */,
-				847530FB2490DF1900253548 /* AddTaskViewController.swift */,
+				848E02F72493E24F00582127 /* customItems */,
+				848E02F62493E11500582127 /* ViewControllers */,
 				847530E8248E96C500253548 /* Assets.xcassets */,
 				847530EA248E96C500253548 /* LaunchScreen.storyboard */,
 				847530ED248E96C500253548 /* Info.plist */,
 				847530E5248E96C100253548 /* ToDoList.xcdatamodeld */,
 			);
 			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		848E02F62493E11500582127 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				847530FB2490DF1900253548 /* AddTaskViewController.swift */,
+				847530FF24925E7D00253548 /* TabBarViewController.swift */,
+				847530E0248E96C000253548 /* ViewController.swift */,
+				848E02F42493D90A00582127 /* FavouritesTasksViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		848E02F72493E24F00582127 /* customItems */ = {
+			isa = PBXGroup;
+			children = (
+				847530F5248E978E00253548 /* MarkButton.swift */,
+				847530F6248E978E00253548 /* TaskTableViewCell.swift */,
+				847530FD24923E7600253548 /* CustomTabBar.swift */,
+			);
+			path = customItems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +184,7 @@
 				847530DF248E96C000253548 /* SceneDelegate.swift in Sources */,
 				8475310024925E7D00253548 /* TabBarViewController.swift in Sources */,
 				847530E7248E96C100253548 /* ToDoList.xcdatamodeld in Sources */,
+				848E02F52493D90A00582127 /* FavouritesTasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

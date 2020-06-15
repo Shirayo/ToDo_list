@@ -25,29 +25,15 @@ class MainViewController: UIViewController, TaskTableViewDelegate {
         taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "TaskTableViewCell")
         
         view.addSubview(taskTableView)
-        view.addSubview(addTaskButton)
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editTask))
-        setAddTaskButton()
+        //setAddTaskButton()
         setConstraintsForTableView()
         taskTableView.delegate = self
         taskTableView.dataSource = self
     }
     
-    func setAddTaskButton(isActive: Bool = true) {
-        self.addTaskButton.translatesAutoresizingMaskIntoConstraints = false
-        self.addTaskButton.widthAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = isActive
-        self.addTaskButton.heightAnchor.constraint(equalToConstant: self.view.frame.width / 5).isActive = isActive
-        self.addTaskButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = isActive
-        
-        self.addTaskButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = isActive
-        
-        self.addTaskButton.backgroundColor = .white
-        self.addTaskButton.setImage(UIImage(named: "redPlus"), for: .normal) 
-        self.addTaskButton.layer.cornerRadius = self.view.frame.width / 10
-        self.addTaskButton.addTarget(self, action: #selector(goToAddTaskViewController), for: .touchUpInside)
-       
-    }
+    
     
     func setConstraintsForTableView () {
         self.taskTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,15 +50,7 @@ class MainViewController: UIViewController, TaskTableViewDelegate {
         taskTableView.reloadData()
     }
     
-    @objc func goToAddTaskViewController() {
-        if taskTableView.isEditing == true {
-            rotateAddTaskButton(.pi / 4)
-            taskTableView.setEditing(false, animated: true)
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "edit", style: .plain, target: self, action: #selector(editTask))
-        } else {
-            navigationController?.pushViewController(AddTaskViewController(), animated: true)
-        }
-    }
+   
     
     @objc func editTask() {
         let isEditing = !self.taskTableView.isEditing

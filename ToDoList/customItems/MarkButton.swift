@@ -30,7 +30,6 @@ class MarkButton: UIButton {
         super.init(coder: coder)
         //fatalError("init(coder:) has not been implemented")
     }
-       
     
     //MARK: functions
     
