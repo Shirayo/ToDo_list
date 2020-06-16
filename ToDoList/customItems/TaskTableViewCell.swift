@@ -26,17 +26,18 @@ class TaskTableViewCell: UITableViewCell {
     func createButtonAndTaskText() {
         self.contentView.addSubview(isCompletedButton)
         self.contentView.addSubview(taskTextLabel)
-        self.isCompletedButton.frame = CGRect(x: 10, y: 15, width: 40, height: 40)
+        self.isCompletedButton.frame = CGRect(x: 10, y: 15, width: 30, height: 30)
         self.isCompletedButton.addTarget(self, action: #selector(markButtonTapped(button:)), for: .touchUpInside)
         
         self.isCompletedButton.translatesAutoresizingMaskIntoConstraints = false
         self.isCompletedButton.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15).isActive = true
         self.isCompletedButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -15).isActive = true
         self.isCompletedButton.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10).isActive = true
-        self.isCompletedButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        self.isCompletedButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        self.isCompletedButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        self.isCompletedButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         self.taskTextLabel.frame = CGRect(x: 60, y: 15, width: 100, height: 40)
+        self.taskTextLabel.font = UIFont(name: "HelveticaNeue-Light", size: 17)
         self.taskTextLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.taskTextLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15).isActive = true
